@@ -5,12 +5,14 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.codepath.apps.restclienttemplate.models.ComposeActivity;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
@@ -75,19 +77,11 @@ public class TimelineActivity extends AppCompatActivity {
             // Compose icon has been selected
             Toast.makeText(this, "Compose!", Toast.LENGTH_SHORT).show();
             // Navigate to the compose activity
+            Intent intent = new Intent(this, ComposeActivity.class);
+            startActivity(intent);
+            return true;
         }
-        return true;
-//        // Handle presses on the action bar items
-//        switch (item.getItemId()) {
-//            case R.id.miCompose:
-//                composeMessage();
-//                return true;
-//            case R.id.miProfile:
-//                showProfileView();
-//                return true;
-//            default:
-//                return super.onOptionsItemSelected(item);
-//        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void populateHomeTimeline() {
